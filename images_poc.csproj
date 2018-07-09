@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="7.5.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
+    <Folder Include="Images\iPhone\" />
+    <Folder Include="Thumbnails\" />
+    <Folder Include="Thumbnails\WithExif\" />
+    <Folder Include="Thumbnails\WithoutExif\" />
+  </ItemGroup>
+</Project>
