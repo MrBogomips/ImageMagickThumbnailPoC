@@ -27,36 +27,37 @@ namespace ImageMagick {
             var exif = image.GetExifProfile ();
             if (exif == null) return;
             var orientationValue = exif.GetValue (ExifTag.Orientation).Value;
-            if (orientationValue == null) return;
-            var orientation = (ushort) orientationValue;
-            switch (orientation) {
-                case 1: // Horizontal (normal)
-                    break; // nothing to do
-                case 2: // Mirror orizontal
-                    image.Flop ();
-                    break;
-                case 3: // Rotate 180
-                    image.Rotate (180);
-                    break;
-                case 4: // Mirror vertical
-                    image.Flip ();
-                    break;
-                case 5: // Mirror horizontal and rotate 270 CW
-                    image.Flop ();
-                    image.Rotate (270);
-                    break;
-                case 6: // Rotate 90 CW
-                    image.Rotate (90);
-                    break;
-                case 7: // Mirror horizontal and rotate 90 CW
-                    image.Flop ();
-                    image.Rotate (90);
-                    break;
-                case 8: // Rotate 270 CW
-                    image.Rotate (270);
-                    break;
-                default:
-                    throw new InvalidOperationException ("Unexpected EXIF orientation bitpattern " + orientation);
+            if (orientationValue != null) {
+                var orientation = (ushort) orientationValue;
+                switch (orientation) {
+                    case 1: // Horizontal (normal)
+                        break; // nothing to do
+                    case 2: // Mirror orizontal
+                        image.Flop ();
+                        break;
+                    case 3: // Rotate 180
+                        image.Rotate (180);
+                        break;
+                    case 4: // Mirror vertical
+                        image.Flip ();
+                        break;
+                    case 5: // Mirror horizontal and rotate 270 CW
+                        image.Flop ();
+                        image.Rotate (270);
+                        break;
+                    case 6: // Rotate 90 CW
+                        image.Rotate (90);
+                        break;
+                    case 7: // Mirror horizontal and rotate 90 CW
+                        image.Flop ();
+                        image.Rotate (90);
+                        break;
+                    case 8: // Rotate 270 CW
+                        image.Rotate (270);
+                        break;
+                    default:
+                        throw new InvalidOperationException ("Unexpected EXIF orientation bitpattern " + orientation);
+                }
             }
             image.RemoveProfile ("EXIF");
         }
