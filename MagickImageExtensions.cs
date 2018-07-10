@@ -53,7 +53,7 @@ namespace ImageMagick {
                     image.Rotate (270);
                     break;
                 default:
-                    throw new InvalidOperationException ("Unexpected EXIT orientation bitpattern " + orientation);
+                    throw new InvalidOperationException ("Unexpected EXIF orientation bitpattern " + orientation);
             }
             image.RemoveProfile ("EXIF");
         }
