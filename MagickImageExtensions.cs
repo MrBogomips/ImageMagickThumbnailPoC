@@ -25,7 +25,10 @@ namespace ImageMagick {
         /// <param name="image">Image.</param>
         static void NormalizeImageWithExif (MagickImage image) {
             var exif = image.GetExifProfile ();
-            var orientation = (ushort) exif.GetValue (ExifTag.Orientation).Value;
+            if (exif == null) return;
+            var orientationValue = exif.GetValue (ExifTag.Orientation).Value;
+            if (orientationValue == null) return;
+            var orientation = (ushort) orientationValue;
             switch (orientation) {
                 case 1: // Horizontal (normal)
                     break; // nothing to do
